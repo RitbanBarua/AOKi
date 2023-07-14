@@ -1,0 +1,1777 @@
+/* Log-In CSS Demo */
+
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fccb90;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
+
+@media (min-width: 768px) {
+  .gradient-form {
+    height: 100vh !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+  }
+}
+
+html,
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Own Css - Main */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', 'Roboto', 'Ubuntu', sans-serif;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --main-bg-color: #202125;
+  --primary-text-color: #fff;
+  --danger-color: red;
+  --text-color-black: #111;
+  --col-gray: #6c757d;
+  --col-graydark: #343a40;
+  --col-dark: #2a2c31;
+  --col-black: #121315;
+  --col-light-green: #cae962;
+  --col-btn-light-green: #b0e3af;
+  --col-btn-graydark: #35373d;
+  --quality-btn-col: #ffdd95;
+  --detail-btn-col: #56565b;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Landing Page CSS */
+
+.landing {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden !important;
+}
+
+.bg-video {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden !important;
+  position: absolute;
+  z-index: -1;
+  /* opacity: 0.8; */
+}
+
+.landing-bg {
+  width: 100%;
+  height: auto;
+}
+
+.logo,
+.logo img {
+  width: 80px;
+  height: 80px;
+}
+
+.login-btn {
+  padding: 0.5rem 1.4rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+#landing-login-btn {
+  border: 0.1rem solid white;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin-bottom: 1.2rem;
+}
+
+#landing-login-btn:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.landing-top {
+  width: 100vw;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--primary-text-color);
+  animation: landing-top-visible 1s ease-in-out 0s 1 forwards;
+  visibility: hidden;
+  /*position: relative;*/
+  transition: all 0.4s ease-in-out;
+}
+
+.landing-mid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 65vh;
+  margin: 0 20rem;
+  /* border: 2px solid white; */
+  overflow: hidden;
+  text-align: center;
+}
+
+.landing-text {
+  color: var(--primary-text-color);
+  margin: 1rem 1rem 2.5rem 1rem;
+  animation: landing-text-animation 0.8s ease-in 8.9s 1 forwards;
+  position: relative;
+  visibility: hidden;
+  font-size: 1.3rem;
+}
+
+#landing-enter-block {
+  /* border: 2px solid white; */
+  overflow: hidden;
+}
+
+#landing-enter-btn {
+  /* background-color: rgba(121, 112, 169, 1); */
+  background-color: transparent;
+  color: var(--primary-text-color);
+  border-radius: 1rem;
+  border: 0.2rem solid var(--primary-text-color);
+  padding: 1rem 2rem;
+  transition: all 0.3s linear;
+  position: relative;
+  visibility: hidden;
+  animation: landing-enter-btn-animation 1s linear 9.3s 1 forwards;
+  font-weight: 500;
+  text-shadow: 1px 1px 1px black;
+}
+
+/* background: linear-gradient(0deg, #12111a, transparent); (check pending) */
+
+#landing-enter-btn:hover {
+  background-color: var(--primary-text-color);
+  color: black;
+  text-shadow: none;
+}
+
+#landing-enter-btn:active {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: black;
+  text-shadow: none;
+}
+
+/* Animations */
+
+@keyframes landing-top-visible {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+    /*top: -10rem;*/
+  }
+
+  100% {
+    visibility: visible;
+    /*top: 0rem;*/
+    opacity: 1;
+  }
+}
+
+@keyframes landing-text-animation {
+  from {
+    left: -20rem;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  to {
+    left: 0rem;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes landing-enter-btn-animation {
+  from {
+    left: 10rem;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  to {
+    left: 0rem;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Navbar CSS */
+#navbar {
+  width: 100vw;
+  min-height: 80px;
+  position: relative;
+  z-index: 99;
+  background-color: #12111a;
+}
+
+nav {
+  width: 100vw;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#nav-logo {
+  position: relative;
+  top: 2px;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav ul li {
+  list-style: none;
+  color: var(--primary-text-color);
+  margin: 0rem 1rem;
+  font-weight: 700;
+  overflow: hidden;
+}
+
+nav ul li a {
+  color: whitesmoke;
+  transition: 0.3s ease-in-out;
+  display: flex;
+  overflow: hidden;
+  min-height: 2rem;
+  width: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  /*position: relative;*/
+}
+
+nav ul li a:hover {
+  justify-content: space-around;
+  /*padding-bottom: 0.8rem;*/
+  /*border-bottom: 3px solid white;*/
+  /*top: -8px;*/
+  /*margin-bottom: 3px;*/
+}
+
+.nav-li-underline {
+  margin-top: 3px;
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  transform: skew(160deg);
+  transition: all 0.4s ease;
+  position: relative;
+  left: -100px;
+}
+
+/*.nav-li-underline:hover{
+  width: 100%;
+  left: 0px;
+}*/
+
+.nav-active {
+  left: 0px !important;
+  justify-content: space-around !important;
+}
+
+.search {
+  /* border-radius: 12px; */
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#navbar-search-container {
+  /* media-q: w-1500px*/
+  position: relative;
+  overflow: visible;
+  width: 30vw;
+}
+
+#nav-pc-search {
+  height: 27px;
+}
+
+#navbar-search-area {
+  height: 100% !important;
+  padding-left: 10px;
+  width: 28vw;
+}
+
+#navbar-search-area:focus {
+  outline: none;
+}
+
+.input-nav-search-btn {
+  border: none;
+  cursor: pointer;
+  background-color: var(--primary-text-color);
+}
+
+#navbar-search-btn {
+  height: 100% !important;
+  padding: 0px 10px 0px 5px;
+  width: 2vw;
+}
+
+.nav-mobile-search-btn {
+  display: none;
+  width: 40px;
+  border: none;
+}
+
+.mobile-search-container {
+  width: 100vw;
+  padding: 10px 15px;
+}
+
+#mobile-search {
+  position: absolute;
+  left: 0px;
+  bottom: -57px;
+  display: none;
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+#nav-mobile-search {
+  width: 100%;
+  /* padding: 10px 20px 10px 15px; */
+  display: none;
+}
+
+#nav-mobile-search input {
+  height: 37px;
+  width: 100%;
+}
+
+#mobile-dropdown {
+  position: absolute;
+  left: 0px;
+  /* bottom: -480px; */
+  padding: 0px 15px !important;
+  display: none;
+}
+
+#mobile-search-dropdown-container {
+  position: relative;
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, .3);
+
+}
+
+.dropdown-container {
+  position: absolute;
+  z-index: 990;
+  list-style: none;
+  background: #414248;
+  width: 100%;
+  overflow: hidden;
+}
+
+#search-dropdown-container {
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, .3);
+}
+
+.dropdown-container ul {
+  display: block !important;
+}
+
+.dropdown-container ul li {
+  margin: 0px !important;
+}
+
+.search-result-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px dotted #5c5d63;
+}
+
+.search-result-anime-poster img {
+  width: 50px;
+  border-radius: 6px;
+}
+
+.search-result-anime-info-container {
+  width: 100%;
+  padding-left: 10px;
+}
+
+.search-dropdown-anime-title {
+  font-family: 'Poppins';
+  line-height: 23px;
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.search-dropdown-anime-description {
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  color: #aaa;
+}
+
+
+.search-dropdown-anime-other-info {
+  font-size: 14.5px;
+  font-weight: 400;
+  color: whitesmoke;
+}
+
+#mobile-search-btn {
+  height: 40px;
+  background-color: transparent;
+  margin: auto;
+  display: none !important;
+}
+
+#navbar-login-btn {
+  border: 3px solid #ec3055;
+  color: white;
+}
+
+@media only screen and (max-width: 1410px) {
+  #navbar {
+    background-color: #12111a !important;
+  }
+
+  #nav-pc-ul,
+  #nav-pc-search {
+    display: none !important;
+  }
+
+  #search-dropdown-container {
+    display: none !important;
+  }
+
+  .nav-mobile-search-btn {
+    display: inline-block !important;
+  }
+
+  #mobile-search-btn {
+    display: block !important;
+  }
+
+  #nav-mobile-search {
+    display: flex;
+  }
+
+  #mobile-dropdown {
+    display: block;
+  }
+
+  .hero-container {
+    padding-top: 47px !important;
+    /* #nav-mobile-search padding-top (10px) + #nav-mobile-search input height (37px) */
+  }
+}
+
+/* Home Page CSS */
+
+/* #home-container{
+  background-color: transparent;
+} */
+
+.hero-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 600px;
+  z-index: 1;
+  background: url("https://s4.anilist.co/file/anilistcdn/media/anime/banner/128893-pAA7PjY8l7dy.jpg") no-repeat center center;
+  background-size: cover;
+  opacity: 0.9;
+  filter: brightness(0.6);
+}
+
+.hero-container {
+  /* position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px; */
+  height: 520px;
+  width: 100vw;
+  background-color: transparent;
+}
+
+/* .hero-container img{
+  opacity: 0.6;
+  height: 600px;
+} */
+
+#hero-anime-info {
+  position: relative;
+  z-index: 4;
+  padding: 15px;
+  max-width: 800px;
+  width: 60%;
+  height: 450px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* align-items: center; */
+  /* background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 4px 10px rgba(0, 0, 0, 0.3);  */
+}
+
+.hero-flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.hero-flex i {
+  margin-right: 3px;
+}
+
+.hero-flex p {
+  margin-left: 3px;
+  font-weight: 500;
+}
+
+#hero-spotlight {
+  width: 100%;
+}
+
+#hero-spotlight p {
+  color: var(--col-light-green);
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+
+#hero-title {
+  width: 100%;
+}
+
+#hero-title h1 {
+  font-size: 3rem;
+  font-family: 'Ubuntu', 'Poppins';
+}
+
+#hero-anime-small-info-container {
+  width: 400px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#hero-anime-info-small-btn {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0px 10px;
+}
+
+#hero-current-episode {
+  width: 40px;
+  border-radius: 5px 0px 0px 5px;
+}
+
+#hero-total-episode {
+  width: 40px;
+}
+
+#hero-description p {
+  line-height: 1.5rem;
+  font-size: 0.93rem;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.anime-btn-container {
+  display: flex;
+  align-items: center;
+}
+
+#hero-anime-btn-container {
+  justify-content: space-between;
+  width: 230px;
+}
+
+.watch-now-btn {
+  background-color: var(--col-light-green);
+  color: #111;
+  border: 2px solid var(--col-light-green);
+  border-radius: 30px;
+  padding: 10px;
+  width: 130px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.watch-now-btn p {
+  font-size: 1.03rem;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+}
+
+.detail-btn {
+  background-color: var(--detail-btn-col);
+  color: var(--primary-text-color);
+  border: 2px solid var(--detail-btn-col);
+  border-radius: 30px;
+  padding: 10px 14px;
+  width: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.detail-btn p {
+  font-size: 1.01rem;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+}
+
+.slider-btn-container {
+  /* Cuurently Disabled - ToDo */
+  display: none;
+}
+
+.anime-container {
+  width: 100vw;
+  /* overflow-x: auto;
+  overflow-y: hidden; */
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: flex-start; */
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.anime-container a {
+  color: var(--primary-text-color);
+  cursor: pointer;
+}
+
+.trending-anime-container {
+  position: relative;
+}
+
+#hero-bottom-shadow {
+  width: 100vw;
+  position: absolute;
+  top: -95px;
+  left: 0px;
+  right: 0px;
+  display: block;
+  z-index: 1;
+  height: 65px;
+  background: linear-gradient(0deg, var(--main-bg-color) 0, rgba(42, 44, 49, 0) 76%);
+  opacity: 0.8;
+}
+
+.home-divs-top {
+  margin: 30px 20px;
+}
+
+.home-divs-top-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-divs-top-flex div {
+  width: 110px;
+  padding-right: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.latest-episode-container {
+  flex-wrap: wrap;
+}
+
+/* @media only screen and (max-width: 950px) {
+  .anime-container{
+    flex-wrap: wrap;
+  }
+} */
+
+@media only screen and (max-width: 760px) {
+  #hero-anime-info {
+    height: 285px;
+    bottom: -150px;
+    width: 100%;
+  }
+
+  #hero-description {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 590px) {
+  #hero-spotlight p {
+    font-size: 1.1rem;
+  }
+
+  #hero-title h1 {
+    font-size: 2rem;
+  }
+
+  #hero-anime-small-info-container {
+    display: none;
+  }
+
+  .anime-container {
+    justify-content: center;
+  }
+}
+
+/* SignUp Page CSS */
+#signup-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: -2;
+  display: none;
+}
+
+#signup-outer-container::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: url("./assests/signup-bg.png") no-repeat center center;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 1;
+  z-index: -10;
+}
+
+#signup-outer-container {
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100vw;
+  /* height: 89.4vh; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-bar-left {
+  position: absolute;
+  top: 1rem;
+  left: 3rem;
+  z-index: 2;
+}
+
+.top-bar-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  z-index: 2;
+}
+
+.mobile-top-bar-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.top-bar-right p {
+  color: white;
+  margin: 0rem 1rem;
+  font-weight: 500;
+  font-size: 1.05remm;
+  text-shadow: 2px 2px 2px black;
+}
+
+.mobile-top-bar-right p {
+  color: white;
+  margin: 0rem 1rem;
+  font-weight: 500;
+  font-size: 1.05remm;
+  text-shadow: 2px 2px 2px black;
+}
+
+#signup-login-btn {
+  border: 0.15rem solid #E50914;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#signup-inner-container {
+  width: 60vw;
+  height: 80vh;
+  border: 2px solid white;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 25px;
+  color: var(--primary-text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.mobile-top-signup-login {
+  width: 60vw;
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#signup-inner-container p {
+  color: var(--primary-text-color);
+}
+
+#third-party-signup-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.third-party-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin: 0 1rem;
+  padding: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.third-party-btn:hover {
+  transform: scale(1.15);
+  cursor: pointer;
+}
+
+.third-party-btn img {
+  width: 25px;
+  height: 25px;
+}
+
+.third-party-btn p {
+  margin-left: 0.5rem;
+}
+
+#or-signup-text {
+  text-align: center;
+  display: flex;
+  width: 10vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.or-sideline {
+  width: 2vw;
+  height: 2px;
+  background-color: var(--primary-text-color);
+}
+
+#or-sideline-left {
+  transform: skew(45deg);
+}
+
+#or-sideline-right {
+  transform: skew(315deg);
+}
+
+#or-signup-text p {
+  margin: 0 1vw;
+  display: inline-block;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+#signup-form {
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#signup-form div {
+  position: relative;
+  width: 30vw;
+}
+
+#signup-form div i {
+  position: absolute;
+  top: 0.45rem;
+}
+
+.eye-slash {
+  right: 0.5rem;
+  z-index: 3;
+}
+
+.eye {
+  right: 0.55rem;
+  z-index: 3;
+}
+
+.hide {
+  display: none !important;
+}
+
+#signup-form div i:hover {
+  cursor: pointer;
+}
+
+input {
+  border: none;
+  width: 30vw;
+  height: 4vh;
+  padding: 0rem 0.2rem;
+  font-weight: 500;
+}
+
+#signup-password {
+  padding-right: 2rem;
+}
+
+::placeholder {
+  padding: 0rem 0.5rem;
+  color: grey;
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+
+input[type='submit'] {
+  border: none;
+  border-radius: 15px;
+  height: 4.5vh;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.warnings {
+  padding: 0rem 1rem;
+  color: var(--danger-color) !important;
+  font-weight: 500;
+}
+
+input[type='submit']:hover {
+  background-color: red;
+  transform: scale(1.02);
+  color: var(--primary-text-color);
+}
+
+#terms-box {
+  text-align: center;
+}
+
+@media only screen and (max-width: 1500px) and (max-height: 1050px) {
+  #signup-inner-container {
+    width: 95vw;
+    height: 95vh;
+  }
+
+  #signup-form,
+  #signup-form div,
+  #signup-form input {
+    width: 40vw;
+  }
+
+  .top-bar {
+    display: none;
+  }
+
+  .mobile-top-signup-login {
+    display: flex;
+    width: 95vw;
+  }
+
+  #third-party-signup-btn {
+    flex-direction: column;
+  }
+
+  .third-party-btn {
+    margin: 0.5rem;
+  }
+
+  #google-signup-btn {
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media only screen and (max-width: 850px) and (max-height: 1050px) {
+  #signup-inner-container {
+    width: 95vw;
+    height: 95vh;
+  }
+
+  #signup-form,
+  #signup-form div,
+  #signup-form input {
+    width: 40vw;
+  }
+
+  .top-bar {
+    display: none;
+  }
+
+  .mobile-top-signup-login {
+    display: flex;
+    width: 95vw;
+  }
+
+  .mobile-top-signup-login p {
+    display: none;
+  }
+
+  #third-party-signup-btn {
+    flex-direction: column;
+  }
+
+  .third-party-btn {
+    margin: 0.5rem;
+  }
+
+  #google-signup-btn {
+    padding: 0.5rem 1rem;
+  }
+
+  #signup-form div {
+    width: 85vw;
+  }
+
+  #signup-form input {
+    width: 85vw;
+  }
+}
+
+/*
+https://www.figma.com/community/file/1024966163048500135/Sign-up-Page-UI
+https://codes4education.com/responsive-animated-login-form-using-html-css-javascript/
+https://dribbble.com/shots/20665848-Sign-up-for-Anime-streaming-website#
+font-awesome = id - cexejo3188@ozatvn.com , pass - cexejo3188@ozatvn.com
+*/
+
+/* Streaming Page CSS */
+
+.container {
+  width: 100vw !important;
+  background: var(--main-bg-color);
+  color: var(--primary-text-color);
+}
+
+#streaming-page-top {
+  display: grid;
+  grid-template-columns: 1.5fr 4.5fr;
+  /* grid-template-columns: 20vw 80vw; */
+  width: 100vw;
+  min-height: 97vh;
+}
+
+#streaming-anime-info {
+  padding: 10px;
+}
+
+#mobile-streaming-top {
+  display: grid;
+  grid-template-columns: 3fr 1.5fr;
+  /* grid-template-columns: 60vw 20vw; */
+}
+
+#streaming-video-container {
+  /* height: 97vh; */
+  background-color: var(--col-black);
+}
+
+/* #streaming-video-container iframe{
+  width: 100%;
+} */
+
+/* .video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+                                            16:9
+  height: 0;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+} */
+
+.video-wrapper {
+  margin-top: 10px;
+  margin-right: 10px;
+  aspect-ratio: 16/9;
+}
+
+.video-wrapper video {
+  cursor: pointer;
+}
+
+#video-controls-info {
+  margin: 0rem 1rem;
+}
+
+#video-controls-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0.8rem 0rem;
+}
+
+#controls-left div,
+#controls-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#controls-left div span {
+  margin-right: 0px !important;
+}
+
+.video-controls-margin {
+  margin: auto .7rem;
+}
+
+#light {
+  cursor: pointer;
+}
+
+#controls-right i {
+  cursor: pointer;
+}
+
+#video-controls-mid {
+  background-color: var(--main-bg-color);
+  /* background-color: #202125; */
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  grid-template-rows: repeat(2, 1fr);
+  /* row-gap: 0.8rem; */
+}
+
+#episode-info {
+  grid-row: 1 / span 2;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.95rem;
+  line-height: 1.5rem;
+  background-color: var(--col-light-green);
+  color: var(--text-color-black);
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+#episode-info span {
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: inline-block;
+  width: 100%;
+}
+
+#sub-options {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px dotted var(--col-graydark);
+}
+
+#dub-options {
+  display: flex;
+  align-items: center;
+  /* border-top: 1px dotted var(--col-graydark); */
+}
+
+.sub-dub-options-label {
+  width: 20%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.sub-dub-options-label p {
+  font-weight: bold;
+}
+
+.server-options {
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.server-options button {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  background-color: var(--col-btn-graydark);
+  border-radius: 8px;
+  border: 2px solid red;
+  cursor: pointer;
+}
+
+.server-options button p {
+  font-weight: bold;
+  color: var(--primary-text-color);
+}
+
+#streaming-episode-list {
+  width: 100%;
+}
+
+#recommended-title {
+  margin: 0px 0px 10px 10px;
+}
+
+@media only screen and (max-width: 1310px) {
+  #streaming-page-top {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #streaming-anime-info {
+    padding: 10px;
+    height: 650px;
+    margin: 20px 5px;
+  }
+
+  #streaming-anime-description {
+    height: 200px !important;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #mobile-streaming-top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #streaming-video-container {
+    margin: 2px 0px 20px 0px;
+  }
+
+  #video-controls-mid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #sub-options,
+  #dub-options {
+    width: 100%;
+  }
+
+  .sub-dub-options-label {
+    margin: 4px;
+  }
+
+  #episodes-list-top {
+    border-top: 1px dotted white;
+  }
+
+  #streaming-anime-recommendation-container {
+    justify-content: center !important;
+  }
+}
+
+/* Anime Info (Small) CSS */
+
+#streaming-anime-info-container {
+  border-radius: 10px;
+  border: 2px solid white;
+  padding: 15px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  /* background: url("https://gogocdn.net/cover/spy-x-family.png") no-repeat center center; */
+}
+
+#streaming-anime-image-wrapper img {
+  width: 150px;
+  border-radius: 10px;
+}
+
+#streaming-anime-name {
+  width: 100%;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+#streaming-anime-info-small {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#streaming-anime-info-small-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.anime-info-small {
+  height: 20px;
+  padding: 0px 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}
+
+.anime-info-small i {
+  margin-right: 4px;
+}
+
+.anime-quality-small {
+  background-color: var(--quality-btn-col);
+  color: #111;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.anime-current-episode-count-small {
+  background-color: var(--col-btn-light-green);
+  color: #111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 52px;
+}
+
+.anime-total-episode-count-small {
+  background-color: rgba(238, 238, 238, .2);
+  color: #fff;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .3);
+  margin: 0px 10px;
+  display: inline-block
+}
+
+#streaming-anime-info-small-mobile {
+  display: none;
+}
+
+#streaming-anime-description {
+  height: 35vh;
+  overflow: auto;
+  line-height: 1.5rem;
+  font-size: 0.93rem;
+  padding: 0px 5px;
+  text-align: justify;
+}
+
+#streaming-anime-description p{
+  font-family: 'Roboto', 'Poppins', sans-serif;
+}
+
+/* Episodes List CSS */
+#episodes-list-container {
+  width: 100% !important;
+  height: 100% !important;
+
+}
+
+#episodes-list-top {
+  height: 7vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px dotted white;
+  position: relative;
+}
+
+#episodes-list-top label i {
+  cursor: pointer;
+  padding-right: 4px;
+}
+
+#episode-search {
+  width: 150px;
+  border: 2px solid var(--col-btn-graydark) !important;
+  border-radius: 5px;
+  background-color: transparent;
+  color: var(--primary-text-color);
+}
+
+/* #episode-search-placeholder{
+  width: 145px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  padding: 0rem 0.4rem;
+  color: var(--col-gray);
+} */
+
+#episodes-list {
+  max-height: 90vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#episodes-list a {
+  color: var(--primary-text-color);
+}
+
+#episodes-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  font-size: 1.05rem;
+  height: 5vh;
+}
+
+#episodes-list li div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  width: 85%;
+  overflow: hidden;
+}
+
+.episode-no {
+  margin: 0rem 0.8rem;
+}
+
+#episodes-list li i {
+  margin-right: 2.1rem;
+  visibility: hidden;
+}
+
+.episode-list-active {
+  background: var(--col-gray) !important;
+}
+
+.episode-list-active div {
+  border-left: 5px solid var(--col-light-green);
+}
+
+.episode-list-active i {
+  visibility: visible !important;
+}
+
+/* Streaming Page Recommendations CSS */
+#streaming-anime-recommendation-container {
+  width: 100vw;
+  position: relative;
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 5px;
+}
+
+#streaming-anime-recommendation-container a {
+  color: var(--primary-text-color);
+}
+
+.anime-recommendation-container {
+  position: relative;
+  display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 210px;
+  height: 300px;
+  margin: 3px;
+}
+
+.anime-recommendation-container img {
+  width: 210px;
+  height: 300px;
+}
+
+.recommended-anime-info {
+  width: 100%;
+  height: 88px;
+  position: absolute;
+  bottom: 0px;
+  z-index: 3;
+  background-color: var(--col-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.anime-recommendation-container div::after {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 0px;
+  right: 0px;
+  display: block;
+  width: 100%;
+  z-index: -2;
+  height: 40px;
+  background: linear-gradient(0deg, var(--col-dark) 0, rgba(42, 44, 49, 0) 76%);
+  opacity: 0.6;
+}
+
+.recommended-anime-title {
+  text-align: center;
+  font-weight: 500;
+  margin: 0px 3px;
+}
+
+.recommended-anime-other-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: whitesmoke;
+}
+
+.style-container {
+  position: relative;
+}
+
+.anime-info-small-btn {
+  position: absolute;
+  bottom: 88px;
+  /* .recommended-anime-info => height */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 0px 10px;
+  z-index: -1;
+}
+
+.anime-wrapper {
+  width: 210px;
+  height: 296px;
+  /* Incoming Image */
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  background: transparent;
+  z-index: 3;
+}
+
+.anime-box-current-episode-count {
+  border-radius: 3px 0px 0px 3px;
+}
+
+@media only screen and (max-width: 590px) {
+  .anime-recommendation-container {
+    width: 180px;
+  }
+
+  .anime-recommendation-container img{
+    width: 180px;
+  }
+
+  .anime-wrapper {
+    width: 185px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .anime-recommendation-container {
+    width: 165px;
+    margin: 2px;
+  }
+}
+
+/* Go To Top Button JS */
+
+#go-to-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  text-align: center;
+  background-color: #fff;
+  cursor: pointer;
+  z-index: 9;
+  display: none;
+  opacity: .8 !important;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, .1);
+  transition: all 0.2s ease-in-out;
+}
+
+#go-to-top-btn:hover, #go-to-top-btn:active{
+  opacity: 1 !important;
+}
+
+/* About Us Container */
+
+#about-us-container{
+  min-height: 100vh;
+}
+
+#source-code-container{
+  width: 100%;
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#source-code-container p{
+  padding-right: 15px;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+#source-code-container button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Watchlist Page CSS */
+#catalogue-container{
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+}
+
+/* Watchlist Page CSS */
+#watchlist-container{
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+}
+
+/* Error Page CSS */
+#error-container{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-text-color);
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+/* Misc CSS */
+
+.active {
+  display: block !important;
+  opacity: 1;
+}
+
+.disabled {
+  /* pointer-events: none !important; */
+  cursor: not-allowed !important;
+}
+
+.disabled button,
+.disabled i {
+  cursor: not-allowed !important;
+}
+
+.test-container {
+  border: 2px solid black;
+  margin: 5px;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  overflow: auto;
+}
+
+.test {
+  border: 2px solid black;
+  min-width: 200px;
+  min-height: 200px;
+  margin: 6px;
+  position: relative;
+}
+
+.loader-small {
+  width: 100px;
+  height: 100px;
+  filter: saturate(0.4);
+  display: block;
+  margin: 15px auto 0px auto;
+}
+
+::-webkit-scrollbar {
+  max-width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--col-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--detail-btn-col);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--col-gray); 
+}
