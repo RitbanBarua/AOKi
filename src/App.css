@@ -1107,6 +1107,7 @@ font-awesome = id - cexejo3188@ozatvn.com , pass - cexejo3188@ozatvn.com
 }
 
 #mobile-streaming-top {
+  width: 100%;
   display: grid;
   grid-template-columns: 3fr 1.5fr;
   /* grid-template-columns: 60vw 20vw; */
@@ -1114,6 +1115,7 @@ font-awesome = id - cexejo3188@ozatvn.com , pass - cexejo3188@ozatvn.com
 
 #streaming-video-container {
   /* height: 97vh; */
+  width: 100%;
   background-color: var(--col-black);
 }
 
