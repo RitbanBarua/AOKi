@@ -16,11 +16,10 @@ export default function Home() {
   const [latestAnimePageNo, setLatestAnimePageNo] = useState(1);
   const [hasMoreLatestAnime, setHasMoreLatestAnime] = useState(false);
   const load = useContext(LoadingContext);
-  console.log(load)
-  console.log(load.loadingState)
+
   setTimeout(() => {
     load.setLoadingState(true)
-    console.log(load.loadingState)
+    // console.log(load.loadingState)
   }, 5000);
   const [progress, setProgress] = useState(0);
 
@@ -29,7 +28,7 @@ export default function Home() {
       const fetchingTrendingAnime = await fetch("https://api.consumet.org/meta/anilist/trending?page=1&perPage=12");
       const fetchedTrendingAnime = await fetchingTrendingAnime.json();
       setTrendingAnime(fetchedTrendingAnime.results);
-      console.log(trendingAnime);
+      // console.log(trendingAnime);
       // setDataLoading(false);
     } catch (error) {
       console.log(error);
@@ -53,7 +52,7 @@ export default function Home() {
       const fetchingLatestAnime = await fetch(anilistURL);
       const fetchedLatestAnime = await fetchingLatestAnime.json();
       setLatestAnime(latestAnime.concat(fetchedLatestAnime.results));
-      console.log(latestAnime);
+      // console.log(latestAnime);
       setHasMoreLatestAnime(fetchedLatestAnime.hasNextPage);
       setDataLoading(false);
     } catch (error) {

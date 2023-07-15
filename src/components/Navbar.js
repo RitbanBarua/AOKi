@@ -73,7 +73,7 @@ export default function Navbar(props) {
     return () => clearTimeout(delayDebounceFn);
     // eslint-disable-next-line
   }, [location, searchQ, searchQuerry, searchDropdown]);
-  console.log("searchDrop: " + searchDropdown);
+  // console.log("searchDrop: " + searchDropdown);
 
   const mouseEnterStyles = {
     "0": () => {
@@ -167,7 +167,7 @@ export default function Navbar(props) {
                       )
                     })
                     :
-                    console.log("Loading...")
+                    null
                 }
               </ul>
             </div>
@@ -213,7 +213,7 @@ export default function Navbar(props) {
                         )
                       })
                       :
-                      console.log("Loading...")
+                      null
                   }
                 </ul>
               </div>

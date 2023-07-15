@@ -46,6 +46,7 @@ export default function StreamingPage() {
     });
     const [streamingLinks, setStreamingLinks] = useState({});
     const [progress, setProgress] = useState(0);
+    const [videoUrlFetched, setVideoUrlFetched] = useState(false);
     const streamingEpisodeIndex = useContext(EpisodeIndexContext);
     // const load = useContext(LoadingContext);
     // load.setLoadingState(true);
@@ -169,9 +170,9 @@ export default function StreamingPage() {
                 setProgress(50);
                 // console.log(episodeNo)
                 streamingEpisodeIndex.setEpisodeIndex(episodeNo - 1);
-                console.log(streamingAnimeData)
+                // console.log(streamingAnimeData)
                 const fetchingStreamingData = await fetch(`https://api.consumet.org/meta/anilist/watch/${streamingAnimeData.episodes[streamingEpisodeIndex.episodeIndex].id}`);
-                console.log(`https://api.consumet.org/meta/anilist/watch/${streamingAnimeData.episodes[streamingEpisodeIndex.episodeIndex].id}`)
+                // console.log(`https://api.consumet.org/meta/anilist/watch/${streamingAnimeData.episodes[streamingEpisodeIndex.episodeIndex].id}`)
                 const fetchedStreamingData = await fetchingStreamingData.json();
                 setStreamingLinks({
                     "360p": `${fetchedStreamingData.sources[0].url}`,
@@ -180,8 +181,8 @@ export default function StreamingPage() {
                     "1080p": `${fetchedStreamingData.sources[3].url}`,
                     "download": `${fetchedStreamingData.download}`,
                 });
-                console.log(streamingLinks)
                 setProgress(80);
+                setVideoUrlFetched(true);
             } catch (error) {
                 // console.log("catch is running")                 //This will always run due to setState in react
                 // errorStatus.setErrorState(true);
@@ -196,6 +197,12 @@ export default function StreamingPage() {
         document.title = `Watch ${streamingAnimeData.title} - Episode ${episodeNo}`;
         // eslint-disable-next-line
     }, [dataLoading, streamingEpisodeIndex.episodeIndex, episodeNo, animeId, streamingAnimeData.title])
+
+    useEffect(() => {
+      setVideoUrlFetched(false);
+    }, [episodeNo, animeId]);
+    
+    // console.log("Video Fetched: " + videoUrlFetched);
 
     return (
         <>
@@ -216,7 +223,9 @@ export default function StreamingPage() {
                             <div id="streaming-video-container">
                                 <div className="video-wrapper">
                                     {/* <iframe src="https://gotaku1.com/embedplus?id=MTg0MTQx&token=_zwAHfLvwqIGjYsrxU8GvQ&expires=1687450588" title="YouTube video player" frameBorder="0" allow="autoplay; fullscreen; geolocation; display-capture; picture-in-picture"></iframe> */}
-                                    <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+                                    {(videoUrlFetched) ? <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+                                    :
+                                    "Video Loading..."}
                                 </div>
                                 <div id="video-controls-info">
                                     {dataLoading ? <Skeleton width={'100%'} height={'19px'} style={{ borderRadius: '3px', margin: '4px' }} baseColor="#202020" highlightColor="#444" /> :
