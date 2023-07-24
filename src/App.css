@@ -79,7 +79,8 @@ a {
 
 .landing-bg {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 }
 
 .logo,
@@ -125,7 +126,7 @@ a {
   justify-content: center;
   align-items: center;
   min-height: 65vh;
-  margin: 0 20rem;
+  /* margin: 0 20rem; */
   /* border: 2px solid white; */
   overflow: hidden;
   text-align: center;
@@ -172,6 +173,12 @@ a {
   background-color: rgba(255, 255, 255, 0.7);
   color: black;
   text-shadow: none;
+}
+
+@media only screen and (max-width: 1000px) {
+  .landing-text{
+    font-size: 1.2rem;
+  }
 }
 
 /* Animations */
