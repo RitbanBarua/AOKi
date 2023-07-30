@@ -147,7 +147,7 @@ export default function Home() {
             </div>
           </div>
           <div className="anime-container">
-            {(trendingAnime.length !== 0) ?
+            {(trendingAnime !== undefined && trendingAnime.length !== 0) ?
               trendingAnime.map((elem) => {
                 let title = '?';
                 if(elem.title.english !== null){
@@ -173,7 +173,7 @@ export default function Home() {
           <h2 className='home-divs-top'>Latest Episode</h2>
           <InfiniteScroll dataLength={latestAnime.length} next={loadMoreLatestAnime} hasMore={hasMoreLatestAnime} loader={<img className='loader-small' src={loaderSmall} alt="loading..." />} >
             <div className="anime-container latest-episode-container">
-              {(latestAnime.length !== 0) ?
+              {(latestAnime !== undefined && latestAnime.length !== 0) ?
                 latestAnime.map((elem) => {
                   let title = '?';
                   i++;
