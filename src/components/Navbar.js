@@ -19,7 +19,7 @@ export default function Navbar(props) {
 
   const searchAnime = async (searchQuerry, page = 1) => {
     try {
-      const fetchingSearchData = await fetch(`https://api.consumet.org/meta/anilist/${searchQuerry.replace(" ", "%20")}?page=${page}&perPage=5`);
+      const fetchingSearchData = await fetch(`https://consumet-api-private.vercel.app/meta/anilist/${searchQuerry.replace(" ", "%20")}?page=${page}&perPage=5`);
       if (fetchingSearchData.status !== 200) {          // Error Handling Here - To Do
         console.log("API Error");
       }

@@ -80,11 +80,11 @@ export default function StreamingPage() {
     // useEffect(() => {
     //     async function fetchStreamingData() {
     //         try {
-    //             const fetchingZoroData = await fetch(`https://api.consumet.org/anime/zoro/info?id=spy-x-family-17977`);
+    //             const fetchingZoroData = await fetch(`https://consumet-api-private.vercel.app/anime/zoro/info?id=spy-x-family-17977`);
     //             const fetchedZoroData = await fetchingZoroData.json();
     //             setStreamingData(fetchedZoroData);
     //             try {
-    //                 const fetchingAnilistData = await fetch(`https://api.consumet.org/meta/anilist/info/${fetchedZoroData.alID}?provider={zoro}`);
+    //                 const fetchingAnilistData = await fetch(`https://consumet-api-private.vercel.app/meta/anilist/info/${fetchedZoroData.alID}?provider={zoro}`);
     //                 const fetchedAnilistData = await fetchingAnilistData.json();
     //                 setStreamingAnilistData(fetchedAnilistData);
     //             } catch (error) {
@@ -135,7 +135,7 @@ export default function StreamingPage() {
             try {
                 errorStatus.setErrorState(false);
                 console.log(errorStatus.errorState)
-                const fetchingAnilistData = await fetch(`https://api.consumet.org/meta/anilist/info/${animeId}?provider=gogoanime`);
+                const fetchingAnilistData = await fetch(`https://consumet-api-private.vercel.app/meta/anilist/info/${animeId}?provider=gogoanime`);
                 const fetchedAnilistData = await fetchingAnilistData.json();
                 if(!fetchingAnilistData.ok){
                     errorStatus.setErrorState(true);
@@ -171,8 +171,8 @@ export default function StreamingPage() {
                 // console.log(episodeNo)
                 streamingEpisodeIndex.setEpisodeIndex(episodeNo - 1);
                 // console.log(streamingAnimeData)
-                const fetchingStreamingData = await fetch(`https://api.consumet.org/meta/anilist/watch/${streamingAnimeData.episodes[streamingEpisodeIndex.episodeIndex].id}`);
-                // console.log(`https://api.consumet.org/meta/anilist/watch/${streamingAnimeData.episodes[streamingEpisodeIndex.episodeIndex].id}`)
+                const fetchingStreamingData = await fetch(`https://consumet-api-private.vercel.app/meta/anilist/watch/${streamingAnimeData.episodes[streamingEpisodeIndex.episodeIndex].id}`);
+                // console.log(`https://consumet-api-private.vercel.app/meta/anilist/watch/${streamingAnimeData.episodes[streamingEpisodeIndex.episodeIndex].id}`)
                 const fetchedStreamingData = await fetchingStreamingData.json();
                 setStreamingLinks({
                     "360p": `${fetchedStreamingData.sources[0].url}`,
