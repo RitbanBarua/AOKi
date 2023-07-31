@@ -499,9 +499,9 @@ nav ul li a:hover {
 
 /* Home Page CSS */
 
-/* #home-container{
-  background-color: transparent;
-} */
+#home-container{
+  min-height: 100vh;
+}
 
 .hero-container::before {
   content: "";
@@ -1440,6 +1440,7 @@ font-awesome = id - cexejo3188@ozatvn.com , pass - cexejo3188@ozatvn.com
 
 #episodes-list-top {
   height: 7vh;
+  min-height: 70px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -1490,6 +1491,7 @@ font-awesome = id - cexejo3188@ozatvn.com , pass - cexejo3188@ozatvn.com
   cursor: pointer;
   font-size: 1.05rem;
   height: 5vh;
+  min-height: 50px;
 }
 
 #episodes-list li div {
