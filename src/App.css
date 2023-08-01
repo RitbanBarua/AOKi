@@ -1156,9 +1156,9 @@ font-awesome = id - cexejo3188@ozatvn.com , pass - cexejo3188@ozatvn.com
   aspect-ratio: 16/9;
 }
 
-.video-wrapper video {
+/* .video-wrapper video {
   cursor: pointer;
-}
+} */
 
 #video-controls-info {
   margin: 0rem 1rem;
@@ -1170,6 +1170,7 @@ font-awesome = id - cexejo3188@ozatvn.com , pass - cexejo3188@ozatvn.com
   align-items: center;
   width: 100%;
   margin: 0.8rem 0rem;
+  user-select: none;
 }
 
 #controls-left div,
