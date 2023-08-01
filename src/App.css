@@ -62,7 +62,7 @@ a {
 
 /* Landing Page CSS */
 
-.landing {
+#landing-page-container {
   width: 100vw;
   height: 100vh;
   overflow: hidden !important;
@@ -108,7 +108,7 @@ a {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.landing-top {
+#landing-top {
   width: 100vw;
   margin: 1rem 0;
   display: flex;
@@ -121,7 +121,7 @@ a {
   transition: all 0.4s ease-in-out;
 }
 
-.landing-mid {
+#landing-mid {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1102,7 +1102,7 @@ font-awesome = id - cexejo3188@ozatvn.com , pass - cexejo3188@ozatvn.com
 
 .container {
   width: 100vw !important;
-  background: var(--main-bg-color);
+  background-color: var(--main-bg-color);
   color: var(--primary-text-color);
 }
 
