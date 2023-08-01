@@ -4,9 +4,6 @@ import EpisodesList from './EpisodesList';
 import AnimeInfoSmall from './AnimeInfoSmall';
 import AnimeBox from './AnimeBox';
 import EpisodeIndexContext from '../context/streamingEpisodeIndex/EpisodeIndexContext';
-// import videojs from 'video.js'
-// import VideoJS from './VideoJS';
-// import { useRef } from 'react';
 import VidStack from '../components/VidStack';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -100,40 +97,6 @@ export default function StreamingPage() {
     // console.log(streamingData)
     // console.log(streamingAnilistData)
 
-
-    //VideoJS Player ->
-
-    // const playerRef = useRef(null);
-    // const videoJsOptions = {
-    //     autoplay: true,
-    //     controls: true,
-    //     responsive: true,
-    //     fluid: true,
-    //     sources: [{
-    //         src: `${streamingLinks['1080p']}`,
-    //         type: 'application/x-mpegURL',
-    //         label: '1080p',
-    //     },
-    //     {
-    //         src: `${streamingLinks['720p']}`,
-    //         type: 'application/x-mpegURL',
-    //         label: '720p',
-    //     }]
-    // };
-
-    // const handlePlayerReady = (player) => {
-    //     playerRef.current = player;
-
-    //     // You can handle player events here, for example:
-    //     player.on('waiting', () => {
-    //         videojs.log('player is waiting');
-    //     });
-
-    //     player.on('dispose', () => {
-    //         videojs.log('player will dispose');
-    //     });
-    // };
-
     useEffect(() => {
         async function fetchAnimeData() {
             try {
@@ -177,7 +140,7 @@ export default function StreamingPage() {
                 streamingEpisodeIndex.setEpisodeIndex(episodeNo - 1);
                 // console.log(streamingAnimeData)
                 const fetchingStreamingData = await fetch(`https://consumet-api-private.vercel.app/meta/anilist/watch/${streamingAnimeData.episodes[streamingEpisodeIndex.episodeIndex].id}`);
-                // console.log(`https://consumet-api-private.vercel.app/meta/anilist/watch/${streamingAnimeData.episodes[streamingEpisodeIndex.episodeIndex].id}`)
+                
                 const fetchedStreamingData = await fetchingStreamingData.json();
                 setStreamingLinks({
                     "360p": `${fetchedStreamingData.sources[0].url}`,
@@ -223,10 +186,6 @@ export default function StreamingPage() {
                         <div id="mobile-streaming-top">
                             <div id="streaming-video-container">
                                 <div className="video-wrapper">
-                                    {/* <iframe src="https://gotaku1.com/embedplus?id=MTg0MTQx&token=_zwAHfLvwqIGjYsrxU8GvQ&expires=1687450588" title="YouTube video player" frameBorder="0" allow="autoplay; fullscreen; geolocation; display-capture; picture-in-picture"></iframe> */}
-                                    {/* {(videoUrlFetched) ? <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
-                                    :
-                                    "Video Loading..."} */}
                                     {(videoFetching !== true && streamingLinks['default'] !== undefined) ?  // Extra Security
                                         <VidStack link={streamingLinks['default']} vidTitle={`Episode ${episodeNo}`} />
                                         :
