@@ -4,9 +4,10 @@ import EpisodesList from './EpisodesList';
 import AnimeInfoSmall from './AnimeInfoSmall';
 import AnimeBox from './AnimeBox';
 import EpisodeIndexContext from '../context/streamingEpisodeIndex/EpisodeIndexContext';
-import videojs from 'video.js'
-import VideoJS from './VideoJS';
-import { useRef } from 'react';
+// import videojs from 'video.js'
+// import VideoJS from './VideoJS';
+// import { useRef } from 'react';
+import VidStack from '../components/VidStack';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 // import LoadingContext from '../context/loading/LoadingContext';
@@ -46,7 +47,7 @@ export default function StreamingPage() {
     });
     const [streamingLinks, setStreamingLinks] = useState({});
     const [progress, setProgress] = useState(0);
-    const [videoUrlFetched, setVideoUrlFetched] = useState(false);
+    const [videoFetching, setVideoFetching] = useState(true);
     const streamingEpisodeIndex = useContext(EpisodeIndexContext);
     // const load = useContext(LoadingContext);
     // load.setLoadingState(true);
@@ -99,42 +100,46 @@ export default function StreamingPage() {
     // console.log(streamingData)
     // console.log(streamingAnilistData)
 
-    const playerRef = useRef(null);
-    const videoJsOptions = {
-        autoplay: true,
-        controls: true,
-        responsive: true,
-        fluid: true,
-        sources: [{
-            src: `${streamingLinks['1080p']}`,
-            type: 'application/x-mpegURL',
-            label: '1080p',
-        },
-        {
-            src: `${streamingLinks['720p']}`,
-            type: 'application/x-mpegURL',
-            label: '720p',
-        }]
-    };
 
-    const handlePlayerReady = (player) => {
-        playerRef.current = player;
+    //VideoJS Player ->
 
-        // You can handle player events here, for example:
-        player.on('waiting', () => {
-            videojs.log('player is waiting');
-        });
+    // const playerRef = useRef(null);
+    // const videoJsOptions = {
+    //     autoplay: true,
+    //     controls: true,
+    //     responsive: true,
+    //     fluid: true,
+    //     sources: [{
+    //         src: `${streamingLinks['1080p']}`,
+    //         type: 'application/x-mpegURL',
+    //         label: '1080p',
+    //     },
+    //     {
+    //         src: `${streamingLinks['720p']}`,
+    //         type: 'application/x-mpegURL',
+    //         label: '720p',
+    //     }]
+    // };
 
-        player.on('dispose', () => {
-            videojs.log('player will dispose');
-        });
-    };
+    // const handlePlayerReady = (player) => {
+    //     playerRef.current = player;
+
+    //     // You can handle player events here, for example:
+    //     player.on('waiting', () => {
+    //         videojs.log('player is waiting');
+    //     });
+
+    //     player.on('dispose', () => {
+    //         videojs.log('player will dispose');
+    //     });
+    // };
 
     useEffect(() => {
         async function fetchAnimeData() {
             try {
                 errorStatus.setErrorState(false);
                 console.log(errorStatus.errorState)
+                setVideoFetching(true);
                 const fetchingAnilistData = await fetch(`https://consumet-api-private.vercel.app/meta/anilist/info/${animeId}?provider=gogoanime`);
                 const fetchedAnilistData = await fetchingAnilistData.json();
                 if(!fetchingAnilistData.ok){
@@ -179,10 +184,11 @@ export default function StreamingPage() {
                     "480p": `${fetchedStreamingData.sources[1].url}`,
                     "720p": `${fetchedStreamingData.sources[2].url}`,
                     "1080p": `${fetchedStreamingData.sources[3].url}`,
+                    "default": `${fetchedStreamingData.sources[4].url}`,
                     "download": `${fetchedStreamingData.download}`,
                 });
                 setProgress(80);
-                setVideoUrlFetched(true);
+                setVideoFetching(false);
             } catch (error) {
                 // console.log("catch is running")                 //This will always run due to setState in react
                 // errorStatus.setErrorState(true);
@@ -198,11 +204,6 @@ export default function StreamingPage() {
         // eslint-disable-next-line
     }, [dataLoading, streamingEpisodeIndex.episodeIndex, episodeNo, animeId, streamingAnimeData.title])
 
-    useEffect(() => {
-      setVideoUrlFetched(false);
-    }, [episodeNo, animeId]);
-    
-    // console.log("Video Fetched: " + videoUrlFetched);
 
     return (
         <>
@@ -223,9 +224,14 @@ export default function StreamingPage() {
                             <div id="streaming-video-container">
                                 <div className="video-wrapper">
                                     {/* <iframe src="https://gotaku1.com/embedplus?id=MTg0MTQx&token=_zwAHfLvwqIGjYsrxU8GvQ&expires=1687450588" title="YouTube video player" frameBorder="0" allow="autoplay; fullscreen; geolocation; display-capture; picture-in-picture"></iframe> */}
-                                    {(videoUrlFetched) ? <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+                                    {/* {(videoUrlFetched) ? <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
                                     :
-                                    "Video Loading..."}
+                                    "Video Loading..."} */}
+                                    {(videoFetching !== true && streamingLinks['default'] !== undefined) ?  // Extra Security
+                                        <VidStack link={streamingLinks['default']} vidTitle={`Episode ${episodeNo}`} />
+                                        :
+                                        "Video Loading...."
+                                    }
                                 </div>
                                 <div id="video-controls-info">
                                     {dataLoading ? <Skeleton width={'100%'} height={'19px'} style={{ borderRadius: '3px', margin: '4px' }} baseColor="#202020" highlightColor="#444" /> :
@@ -246,7 +252,7 @@ export default function StreamingPage() {
                                     <div id="video-controls-mid">
                                         {dataLoading ? <Skeleton width={'95%'} height={'200px'} style={{ borderRadius: '10px' }} baseColor="#202020" highlightColor="#444" /> :
                                             <div id="episode-info">
-                                                <p>You are watching <span>Episode 1</span></p>
+                                                <p>You are watching <span>{`Episode ${episodeNo}`}</span></p>
                                                 <p>If current server doesn't work please try other servers beside.</p>
                                             </div>}
 
