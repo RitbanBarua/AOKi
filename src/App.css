@@ -66,22 +66,23 @@ a {
   width: 100vw;
   height: 100vh;
   overflow: hidden !important;
+  background: url("./assests/landing-bg.png") no-repeat center center;
+  background-size: cover;
 }
 
-.bg-video {
-  width: 100vw;
-  height: 100vh;
+/* .bg-img-wrapper {
+  width: 100%;
+  height: 100%;
   overflow: hidden !important;
   position: absolute;
   z-index: -1;
-  /* opacity: 0.8; */
 }
 
 .landing-bg {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
+} */
 
 .logo,
 .logo img {
@@ -135,10 +136,14 @@ a {
 .landing-text {
   color: var(--primary-text-color);
   margin: 1rem 1rem 2.5rem 1rem;
-  animation: landing-text-animation 0.8s ease-in 8.9s 1 forwards;
+  animation: landing-text-animation 0.8s ease-in 0.2s 1 forwards;
   position: relative;
   visibility: hidden;
   font-size: 1.3rem;
+}
+
+.landing-text h1{
+  text-shadow: 1.5px 1.5px 2px rgba(0, 0, 0, 0.2);
 }
 
 #landing-enter-block {
@@ -156,7 +161,7 @@ a {
   transition: all 0.3s linear;
   position: relative;
   visibility: hidden;
-  animation: landing-enter-btn-animation 1s linear 9.3s 1 forwards;
+  animation: landing-enter-btn-animation 1s ease-in-out 0.6s 1 forwards;
   font-weight: 500;
   text-shadow: 1px 1px 1px black;
 }

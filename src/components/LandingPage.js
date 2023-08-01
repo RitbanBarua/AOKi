@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import bgVideo from '../assests/bg-1.mp4'
+// import bgImg from '../assests/landing-bg.png'
 import logo from '../assests/logo-black.png'
 
 export default function LandingPage() {
     return (
         <>
             <div className="landing">
-                <div className="bg-video">
-                    <video src={bgVideo} type="video/mp4" className='landing-bg' autoPlay muted controls={false}></video>
-                </div>
+                {/* <div className="bg-img-wrapper">
+                    <img src={bgImg} alt="bgImg" />
+                </div> */}
 
                 <div className="landing-top">
                     <div className="logo"><Link to="/home"><img src={logo} alt="Logo" /></Link></div>
