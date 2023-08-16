@@ -23,7 +23,7 @@ export default function Navbar(props) {
       if (fetchingSearchData.status !== 200) {          // Error Handling Here - To Do
         console.log("API Error");
       }
-      else if(fetchingSearchData.status === 200) {
+      else if (fetchingSearchData.status === 200) {
         const fetchedSearchData = await fetchingSearchData.json();
         setSearchResult(fetchedSearchData.results);
         // console.log(fetchedSearchData.results);
@@ -193,23 +193,25 @@ export default function Navbar(props) {
                         let title = (elem.title.english !== null) ? elem.title.english : elem.title.romaji;
                         i++;
                         return (
-                          <li key={title + i}><Link to={`/watch/${elem.id}?ep=1`}>
-                            <div className='search-result-container'>
-                              <div className="search-result-anime-poster"><img src={elem.image} alt="img" /></div>
-                              <div className="search-result-anime-info-container">
-                                <h2 className='search-dropdown-anime-title'>{(title.length > 30) ? title.slice(0, 30) + '...' : title}</h2>
-                                <p className="search-dropdown-anime-description">{elem.description !== null && (elem.description.length > 60) ? elem.description.slice(0, 57) + '...' : elem.description}</p>
-                                <div className="search-dropdown-anime-other-info">
-                                  <span className="search-dropdown-anime-release-date">{(elem.releaseDate !== null) ? elem.releaseDate : `?`}</span>
-                                  <div className="dot"></div>
-                                  {/* <i className="fa fa-star search-dropdown-rating"></i> */} {/* star icon */}
-                                  <span className="search-dropdown-anime-type">{(elem.type !== null) ? elem.type : `?`}</span>
-                                  <div className="dot"></div>
-                                  <span className="search-dropdown-anime-status">{(elem.status !== null) ? elem.status : `?`}</span>
+                          <li key={title + i}>
+                            <Link to={`/watch/${elem.id}?ep=1`}>
+                              <div className='search-result-container'>
+                                <div className="search-result-anime-poster"><img src={elem.image} alt="img" /></div>
+                                <div className="search-result-anime-info-container">
+                                  <h2 className='search-dropdown-anime-title'>{(title.length > 30) ? title.slice(0, 30) + '...' : title}</h2>
+                                  <p className="search-dropdown-anime-description">{elem.description !== null && (elem.description.length > 60) ? elem.description.slice(0, 57) + '...' : elem.description}</p>
+                                  <div className="search-dropdown-anime-other-info">
+                                    <span className="search-dropdown-anime-release-date">{(elem.releaseDate !== null) ? elem.releaseDate : `?`}</span>
+                                    <div className="dot"></div>
+                                    {/* <i className="fa fa-star search-dropdown-rating"></i> */} {/* star icon */}
+                                    <span className="search-dropdown-anime-type">{(elem.type !== null) ? elem.type : `?`}</span>
+                                    <div className="dot"></div>
+                                    <span className="search-dropdown-anime-status">{(elem.status !== null) ? elem.status : `?`}</span>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </Link></li>
+                            </Link>
+                          </li>
                         )
                       })
                       :

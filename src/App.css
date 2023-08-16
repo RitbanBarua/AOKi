@@ -984,6 +984,7 @@ input {
   border: none;
   width: 30vw;
   height: 4vh;
+  min-height: 27px;
   padding: 0rem 0.2rem;
   font-weight: 500;
 }
