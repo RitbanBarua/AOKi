@@ -105,15 +105,15 @@ export default function StreamingPage() {
                 setVideoFetching(true);
                 const fetchingAnilistData = await fetch(`https://consumet-api-private.vercel.app/meta/anilist/info/${animeId}?provider=gogoanime`);
                 const fetchedAnilistData = await fetchingAnilistData.json();
-                if(!fetchingAnilistData.ok){
+                if (!fetchingAnilistData.ok) {
                     errorStatus.setErrorState(true);
                 }
-                
+
                 let fetchedTitle = '?';
-                if(fetchedAnilistData.title.english !== null){
+                if (fetchedAnilistData.title.english !== null) {
                     fetchedTitle = fetchedAnilistData.title.english;
                 }
-                else if(fetchedAnilistData.title.romaji !== null){
+                else if (fetchedAnilistData.title.romaji !== null) {
                     fetchedTitle = fetchedAnilistData.title.romaji;
                 }
                 setStreamingAnimeData({
@@ -140,16 +140,31 @@ export default function StreamingPage() {
                 streamingEpisodeIndex.setEpisodeIndex(episodeNo - 1);
                 // console.log(streamingAnimeData)
                 const fetchingStreamingData = await fetch(`https://consumet-api-private.vercel.app/meta/anilist/watch/${streamingAnimeData.episodes[streamingEpisodeIndex.episodeIndex].id}`);
-                
-                const fetchedStreamingData = await fetchingStreamingData.json();
-                setStreamingLinks({
-                    "360p": `${fetchedStreamingData.sources[0].url}`,
-                    "480p": `${fetchedStreamingData.sources[1].url}`,
-                    "720p": `${fetchedStreamingData.sources[2].url}`,
-                    "1080p": `${fetchedStreamingData.sources[3].url}`,
-                    "default": `${fetchedStreamingData.sources[4].url}`,
-                    "download": `${fetchedStreamingData.download}`,
-                });
+
+                if (fetchingStreamingData.status !== 200) {
+                    const fetchingStreamingData = await fetch(`https://api.consumet.org/meta/anilist/watch/${streamingAnimeData.episodes[streamingEpisodeIndex.episodeIndex].id}`);
+                    const fetchedStreamingData = await fetchingStreamingData.json();
+                    setStreamingLinks({
+                        "360p": `${fetchedStreamingData.sources[0].url}`,
+                        "480p": `${fetchedStreamingData.sources[1].url}`,
+                        "720p": `${fetchedStreamingData.sources[2].url}`,
+                        "1080p": `${fetchedStreamingData.sources[3].url}`,
+                        "default": `${fetchedStreamingData.sources[4].url}`,
+                        "download": `${fetchedStreamingData.download}`,
+                    });
+                }
+
+                else {
+                    const fetchedStreamingData = await fetchingStreamingData.json();
+                    setStreamingLinks({
+                        "360p": `${fetchedStreamingData.sources[0].url}`,
+                        "480p": `${fetchedStreamingData.sources[1].url}`,
+                        "720p": `${fetchedStreamingData.sources[2].url}`,
+                        "1080p": `${fetchedStreamingData.sources[3].url}`,
+                        "default": `${fetchedStreamingData.sources[4].url}`,
+                        "download": `${fetchedStreamingData.download}`,
+                    });
+                }
                 setProgress(80);
                 setVideoFetching(false);
             } catch (error) {
@@ -251,9 +266,9 @@ export default function StreamingPage() {
                             {(streamingAnimeData.recommendations !== null && streamingAnimeData.recommendations.length !== 0) ?
                                 streamingAnimeData.recommendations.map(elem => {
                                     let titleEnglish = '?';
-                                    if(elem.title.english !== null && elem.title.english !== undefined){
+                                    if (elem.title.english !== null && elem.title.english !== undefined) {
                                         titleEnglish = elem.title.english;
-                                        if(titleEnglish.length > 40){
+                                        if (titleEnglish.length > 40) {
                                             titleEnglish = titleEnglish.slice(0, 37) + '...';
                                         }
                                     }
@@ -267,8 +282,8 @@ export default function StreamingPage() {
                     </div>
                     <GoToTopButton />
                 </div>
-                :
-                <ErrorPage />
+                    :
+                    <ErrorPage />
             }
         </>
     )
