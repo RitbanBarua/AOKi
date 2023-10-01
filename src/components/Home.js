@@ -46,20 +46,20 @@ export default function Home() {
     }
   }
 
-
-  const fetchLatestAnime = async (anilistURL) => {
-    try {
-      const fetchingLatestAnime = await fetch(anilistURL);
-      const fetchedLatestAnime = await fetchingLatestAnime.json();
-      setLatestAnime(latestAnime.concat(fetchedLatestAnime.results));
-      // console.log(latestAnime);
-      setHasMoreLatestAnime(fetchedLatestAnime.hasNextPage);
-      setDataLoading(false);
-    } catch (error) {
-      console.log(error);
-      console.log("catch running");
-    }
-  }
+//  Server API Error - Currently Not Working
+  // const fetchLatestAnime = async (anilistURL) => {
+  //   try {
+  //     const fetchingLatestAnime = await fetch(anilistURL);
+  //     const fetchedLatestAnime = await fetchingLatestAnime.json();
+  //     setLatestAnime(latestAnime.concat(fetchedLatestAnime.results));
+  //     // console.log(latestAnime);
+  //     setHasMoreLatestAnime(fetchedLatestAnime.hasNextPage);
+  //     setDataLoading(false);
+  //   } catch (error) {
+  //     console.log(error);
+  //     console.log("catch running");
+  //   }
+  // }
 
   const loadMoreLatestAnime = () => {
     setLatestAnimePageNo(latestAnimePageNo + 1);
@@ -72,7 +72,7 @@ export default function Home() {
     setProgress(0);
     fetchTrendingAnime();
     setProgress(50);
-    fetchLatestAnime(`https://consumet-api-private.vercel.app/meta/anilist/recent-episodes?page=${latestAnimePageNo}&perPage=14&provider=gogoanime`);
+    // fetchLatestAnime(`https://consumet-api-private.vercel.app/meta/anilist/recent-episodes?page=${latestAnimePageNo}&perPage=14&provider=gogoanime`);
     setProgress(100);
     // eslint-disable-next-line
   }, [dataLoading, latestAnimePageNo]);
@@ -173,7 +173,7 @@ export default function Home() {
           <h2 className='home-divs-top'>Latest Episode</h2>
           <InfiniteScroll dataLength={latestAnime.length} next={loadMoreLatestAnime} hasMore={hasMoreLatestAnime} loader={<img className='loader-small' src={loaderSmall} alt="loading..." />} >
             <div className="anime-container latest-episode-container">
-              {(latestAnime !== undefined && latestAnime.length !== 0) ?
+              {/* {(latestAnime !== undefined && latestAnime.length !== 0) ?
                 latestAnime.map((elem) => {
                   let title = '?';
                   i++;
@@ -194,7 +194,8 @@ export default function Home() {
                 })
                 :
                 'loading...'
-              }
+              } */}
+              Server Not Working
             </div>
           </InfiniteScroll>
         </div>
